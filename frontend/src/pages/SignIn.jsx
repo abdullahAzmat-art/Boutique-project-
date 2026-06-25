@@ -21,7 +21,7 @@ const SignIn = () => {
     setSuccessMsg('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch('https://boutique-project-eta.vercel.app/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,21 +39,22 @@ const SignIn = () => {
       } else {
         setSuccessMsg('Signed in successfully! Redirecting...');
         
-        // Save token
+        // Save token and user info
         localStorage.setItem('token', result.data.token);
-
-        const role = result.data.role;
-        if (role) {
-          sessionStorage.setItem('role', role);
-        }
+        localStorage.setItem('user', JSON.stringify({
+          _id: result.data._id,
+          name: result.data.name,
+          email: result.data.email,
+          role: result.data.role,
+        }));
 
         setTimeout(() => {
-          if (role === 'admin') {
-            navigate('/add-product');
+          if (result.data.role === 'admin') {
+            navigate('/admin');
           } else {
             navigate('/');
           }
-        }, 2000);
+        }, 1500);
       }
     } catch (err) {
       setErrorMsg('Network error. Please try again later.');

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ShoppingBag, Search } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ShoppingBag, LayoutDashboard } from 'lucide-react';
 
 const STYLES = `
   @keyframes navFadeDown {
@@ -20,6 +20,8 @@ const STYLES = `
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!document.getElementById('ayesha-nav-keyframes')) {
@@ -30,6 +32,10 @@ const Navbar = () => {
     }
     const t = setTimeout(() => setLoaded(true), 50);
 
+    // Read user from localStorage
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) setUser(JSON.parse(storedUser));
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
     };
@@ -39,6 +45,13 @@ const Navbar = () => {
       clearTimeout(t);
     };
   }, []);
+
+  const handleSignOut = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+    navigate('/');
+  };
 
   return (
     <nav style={{
@@ -115,6 +128,32 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+
+          {/* Admin Panel link — only visible when logged in as admin */}
+          {user?.role === 'admin' && (
+            <Link
+              to="/admin"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '0.78rem',
+                fontWeight: '400',
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                color: 'var(--primary-dark)',
+                transition: 'color 0.3s ease',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                opacity: loaded ? 1 : 0,
+                animation: loaded ? 'navFadeDown 0.8s ease 0.5s both' : 'none',
+              }}
+              onMouseOver={e => e.currentTarget.style.color = 'var(--secondary)'}
+              onMouseOut={e => e.currentTarget.style.color = 'var(--primary-dark)'}
+            >
+              <LayoutDashboard size={15} strokeWidth={1.5} />
+              Admin
+            </Link>
+          )}
         </div>
 
         {/* CENTER: Brand Text Logo */}
@@ -157,24 +196,50 @@ const Navbar = () => {
           alignItems: 'center',
           justifyContent: 'flex-end',
         }}>
-          <Link
-            to="/signin"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: '0.78rem',
-              fontWeight: '400',
-              letterSpacing: '1.5px',
-              textTransform: 'uppercase',
-              color: 'var(--text-title)',
-              transition: 'color 0.3s ease',
-              opacity: loaded ? 1 : 0,
-              animation: loaded ? 'navFadeDown 0.8s ease 0.5s both' : 'none',
-            }}
-            onMouseOver={e => e.currentTarget.style.color = 'var(--secondary)'}
-            onMouseOut={e => e.currentTarget.style.color = 'var(--text-title)'}
-          >
-            Sign In
-          </Link>
+          {/* Sign In / Sign Out */}
+          {user ? (
+            <button
+              onClick={handleSignOut}
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '0.78rem',
+                fontWeight: '400',
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                color: 'var(--text-title)',
+                transition: 'color 0.3s ease',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                opacity: loaded ? 1 : 0,
+                animation: loaded ? 'navFadeDown 0.8s ease 0.5s both' : 'none',
+              }}
+              onMouseOver={e => e.currentTarget.style.color = 'var(--secondary)'}
+              onMouseOut={e => e.currentTarget.style.color = 'var(--text-title)'}
+            >
+              Sign Out
+            </button>
+          ) : (
+            <Link
+              to="/signin"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '0.78rem',
+                fontWeight: '400',
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                color: 'var(--text-title)',
+                transition: 'color 0.3s ease',
+                opacity: loaded ? 1 : 0,
+                animation: loaded ? 'navFadeDown 0.8s ease 0.5s both' : 'none',
+              }}
+              onMouseOver={e => e.currentTarget.style.color = 'var(--secondary)'}
+              onMouseOut={e => e.currentTarget.style.color = 'var(--text-title)'}
+            >
+              Sign In
+            </Link>
+          )}
           <div style={{ 
             color: 'var(--text-main)', 
             cursor: 'pointer', 

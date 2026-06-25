@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { UploadCloud, CheckCircle, AlertCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
-const AddProduct = () => {
+const AddProduct = ({ isAdminEmbedded = false }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -66,10 +66,12 @@ const AddProduct = () => {
         whatsappNumber
       };
 
-      const response = await fetch('http://localhost:5000/api/products', {
+      const token = localStorage.getItem('token');
+      const response = await fetch('https://boutique-project-eta.vercel.app/api/products', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(payload),
       });
@@ -97,8 +99,13 @@ const AddProduct = () => {
   };
 
   return (
-    <main style={{ padding: '6rem 0', backgroundColor: 'var(--bg-cream)', minHeight: '100vh' }}>
-      <div className="container" style={{ maxWidth: '800px' }}>
+    <div className="add-product-page fade-in" style={{ 
+      paddingTop: isAdminEmbedded ? '0' : '100px', 
+      paddingBottom: '50px', 
+      minHeight: '100vh',
+      backgroundColor: 'var(--bg-cream)' 
+    }}>
+      <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
         
         <div style={{
           backgroundColor: 'var(--white)',
@@ -302,7 +309,7 @@ const AddProduct = () => {
           </form>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

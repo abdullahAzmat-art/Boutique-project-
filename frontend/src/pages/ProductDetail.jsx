@@ -14,7 +14,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/products/${id}`);
+        const response = await fetch(`https://boutique-project-eta.vercel.app/api/products/${id}`);
         const result = await response.json();
 
         if (!response.ok) throw new Error(result.message || 'Product not found');

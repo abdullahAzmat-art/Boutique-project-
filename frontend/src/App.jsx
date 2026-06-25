@@ -8,6 +8,7 @@ import SignIn from './pages/SignIn';
 import AddProduct from './pages/AddProduct';
 import ProductDetail from './pages/ProductDetail';
 import SignUp from './pages/SignUp';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   const location = useLocation();
@@ -23,6 +24,7 @@ function App() {
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/admin/*" element={<AdminDashboard />} />
       </Routes>
       {!isAuthPage && <Footer />}
     </>

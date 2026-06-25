@@ -13,7 +13,7 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/products');
+        const response = await fetch('https://boutique-project-eta.vercel.app/api/products');
         const result = await response.json();
 
         if (!response.ok) throw new Error(result.message || 'Failed to fetch products');

@@ -22,7 +22,7 @@ const SignUp = () => {
     setSuccessMsg('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/signup', {
+      const response = await fetch('https://boutique-project-eta.vercel.app/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

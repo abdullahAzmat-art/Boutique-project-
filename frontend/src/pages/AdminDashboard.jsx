@@ -21,10 +21,10 @@ const AdminDashboard = () => {
   }, [navigate]);
 
   return (
-    <div className="admin-layout">
+    <div className="admin-layout" style={{marginTop:"40px"}}>
       {/* Sidebar */}
       <aside className="admin-sidebar">
-        <h2 style={{ fontSize: '1.2rem', marginBottom: '2rem', paddingLeft: '1rem', color: 'var(--secondary)' }}>
+        <h2 style={{ fontSize: '1.2rem', marginBottom: '2rem', paddingLeft: '1rem', color: 'var(--secondary)'  }}>
           Admin Panel
         </h2>
 

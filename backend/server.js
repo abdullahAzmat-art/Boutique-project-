@@ -8,6 +8,7 @@ import connectDB from './config/db.js';
 // Import Routes
 import authRoutes from './routes/authRoutes.js';
 import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 // Import Middleware
 import errorHandler from './middleware/errorHandler.js';
@@ -28,6 +29,7 @@ connectDB();
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
 
 // Base route for testing
 app.get('/', (req, res) => {

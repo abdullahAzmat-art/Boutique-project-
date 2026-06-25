@@ -65,18 +65,10 @@ const SignIn = () => {
   };
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-    }}>
+    <div className="auth-layout">
 
       {/* ── LEFT PANEL: Image ── */}
-      <div style={{
-        position: 'relative',
-        overflow: 'hidden',
-        backgroundColor: 'var(--bg-cream)',
-      }}>
+      <div className="auth-image-panel">
         <img
           src={heroImg}
           alt="ayesha.a collection"
@@ -126,14 +118,7 @@ const SignIn = () => {
       </div>
 
       {/* ── RIGHT PANEL: Sign In Form ── */}
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '5rem',
-        backgroundColor: 'var(--white)',
-      }}>
+      <div className="auth-form-panel">
         <div style={{ width: '100%', maxWidth: '420px' }}>
 
           {/* Brand Text Logo at top */}

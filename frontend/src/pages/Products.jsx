@@ -88,7 +88,7 @@ const Products = () => {
   const hasActiveFilters = activeCategory !== 'All' || priceRange[0] > 0 || priceRange[1] < maxPrice || sortBy !== 'newest' || onSaleOnly;
 
   return (
-    <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg-cream)', paddingTop: '10rem', paddingBottom: '8rem' }}>
+    <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg-cream)', paddingBottom: '8rem' }} className="page-top-spacing">
       <div className="container">
 
         {/* Header */}
@@ -126,15 +126,7 @@ const Products = () => {
         </div>
 
         {/* Filter Bar */}
-        <div style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          flexWrap: 'wrap', gap: '1rem',
-          padding: '1rem 1.5rem',
-          backgroundColor: 'var(--white)',
-          borderRadius: '8px',
-          marginBottom: '1.5rem',
-          boxShadow: '0 2px 8px rgba(183,110,121,0.06)',
-        }}>
+        <div className="filter-bar">
           {/* Filter toggle button */}
           <button
             onClick={() => setShowFilters(!showFilters)}
@@ -202,11 +194,10 @@ const Products = () => {
 
         {/* Expanded Filter Panel */}
         {showFilters && (
-          <div style={{
+          <div className="filter-panel-grid" style={{
             backgroundColor: 'var(--white)', borderRadius: '8px',
             padding: '2rem', marginBottom: '2.5rem',
             boxShadow: '0 2px 8px rgba(183,110,121,0.06)',
-            display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem',
           }}>
             {/* Price Range Sliders */}
             <div>
@@ -299,7 +290,7 @@ const Products = () => {
 
         {/* Product Grid */}
         {!loading && !error && filtered.length > 0 && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2.5rem' }}>
+          <div className="products-grid-shop">
             {filtered.map(product => (
               <ProductCard key={product._id || product.id} product={product} />
             ))}

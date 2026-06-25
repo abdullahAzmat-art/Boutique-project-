@@ -107,14 +107,7 @@ const AddProduct = ({ isAdminEmbedded = false }) => {
     }}>
       <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
         
-        <div style={{
-          backgroundColor: 'var(--white)',
-          padding: '4rem',
-          borderRadius: '16px',
-          boxShadow: 'var(--shadow-luxury)',
-          position: 'relative',
-          overflow: 'hidden'
-        }}>
+        <div className="add-product-card">
           {/* Decorative element */}
           <div style={{
             position: 'absolute',
@@ -134,7 +127,7 @@ const AddProduct = ({ isAdminEmbedded = false }) => {
               marginBottom: '1rem',
               fontWeight: '600'
             }}>Admin Portal</p>
-            <h1 className="font-serif" style={{ fontSize: '2.5rem', color: 'var(--secondary)' }}>
+            <h1 className="font-serif" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', color: 'var(--secondary)' }}>
               Add New Product
             </h1>
           </div>
@@ -187,7 +180,7 @@ const AddProduct = ({ isAdminEmbedded = false }) => {
               />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+            <div className="form-grid-2">
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label className="form-label">Price (Rs.) *</label>
                 <input 
@@ -214,7 +207,7 @@ const AddProduct = ({ isAdminEmbedded = false }) => {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+            <div className="form-grid-2">
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label className="form-label">Category *</label>
                 <input 

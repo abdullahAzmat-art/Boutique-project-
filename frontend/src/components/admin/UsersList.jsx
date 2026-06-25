@@ -56,8 +56,8 @@ const UsersList = () => {
     <div>
       <h2 style={{fontFamily: "'Cormorant Garamond', serif", fontSize: '2rem', marginBottom: '2rem'}}>Manage Users</h2>
       
-      <div style={{ backgroundColor: 'white', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <div className="admin-table-wrap" style={{ backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '600px' }}>
           <thead style={{ backgroundColor: '#FAF6F1', textAlign: 'left' }}>
             <tr>
               <th style={thStyle}>Name</th>

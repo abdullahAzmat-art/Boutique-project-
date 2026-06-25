@@ -21,17 +21,9 @@ const AdminDashboard = () => {
   }, [navigate]);
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'var(--bg-cream)', paddingTop: '80px' }}>
+    <div className="admin-layout">
       {/* Sidebar */}
-      <aside style={{
-        width: '250px',
-        backgroundColor: 'var(--white)',
-        borderRight: '1px solid #E8E0D8',
-        padding: '2rem 1rem',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.5rem'
-      }}>
+      <aside className="admin-sidebar">
         <h2 style={{ fontSize: '1.2rem', marginBottom: '2rem', paddingLeft: '1rem', color: 'var(--secondary)' }}>
           Admin Panel
         </h2>
@@ -48,7 +40,7 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main Content Area */}
-      <main style={{ flex: 1, padding: '2rem', overflowY: 'auto' }}>
+      <main className="admin-main">
         <Routes>
           <Route path="/" element={<UsersList />} />
           <Route path="/add-product" element={<AddProduct isAdminEmbedded={true} />} />

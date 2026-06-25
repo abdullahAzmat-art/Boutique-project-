@@ -80,10 +80,16 @@ const STYLES = `
   }
 
   @media (max-width: 880px) {
-    .ayesha-hero-grid { grid-template-columns: 1fr !important; min-height: auto !important; }
-    .ayesha-hero-photo-panel { min-height: 60vh !important; order: -1 !important; }
-    .ayesha-hero-text-panel { padding: 3.5rem 6vw !important; }
+    .ayesha-hero-grid { min-height: auto !important; }
+    .ayesha-hero-text-panel { padding: 3rem 5vw !important; }
+    .ayesha-hero-heading { margin-top: 80px !important; }
     .ayesha-hero-scroll-indicator { display: none !important; }
+  }
+
+  @media (max-width: 480px) {
+    .ayesha-hero-text-panel { padding: 2.5rem 1.25rem !important; }
+    .ayesha-hero-heading { margin-top: 70px !important; }
+    .ayesha-hero-grid { min-height: 85vh !important; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -148,7 +154,7 @@ const Hero = () => {
         
 
           {/* Heading */}
-          <h1 style={{ marginTop: "100px", lineHeight: 1 }}>
+          <h1 className="ayesha-hero-heading" style={{ marginTop: "100px", lineHeight: 1 }}>
             <span
               style={{
                 display: 'block',

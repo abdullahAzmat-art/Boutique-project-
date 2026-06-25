@@ -6,12 +6,7 @@ const Footer = () => {
   return (
     <footer style={{ backgroundColor: 'var(--bg-dark)', color: 'var(--bg-cream)', padding: '6rem 0 2rem' }}>
       <div className="container">
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-          gap: '4rem',
-          marginBottom: '5rem'
-        }}>
+        <div className="footer-grid">
           {/* Brand Info */}
           <div style={{ gridColumn: 'span 1' }}>
             <h3 style={{ 
@@ -124,20 +119,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div style={{
-          borderTop: '1px solid rgba(250, 246, 241, 0.1)',
-          paddingTop: '2rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          color: 'rgba(250, 246, 241, 0.5)',
-          fontSize: '0.85rem',
-          flexWrap: 'wrap',
-          gap: '1rem',
-          fontFamily: "'Montserrat', sans-serif",
-          fontWeight: '300'
-        }}>
-          <p>&copy; {new Date().getFullYear()} ayesha.a collection. All rights reserved.</p>
+        <div className="footer-bottom">
+          <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: '300' }}>&copy; {new Date().getFullYear()} ayesha.a collection. All rights reserved.</p>
           <div style={{ display: 'flex', gap: '2rem' }}>
             <a href="#" style={{ transition: 'color 0.3s' }} onMouseOver={e=>e.currentTarget.style.color='var(--secondary)'} onMouseOut={e=>e.currentTarget.style.color='rgba(250, 246, 241, 0.5)'}>Privacy</a>
             <a href="#" style={{ transition: 'color 0.3s' }} onMouseOver={e=>e.currentTarget.style.color='var(--secondary)'} onMouseOut={e=>e.currentTarget.style.color='rgba(250, 246, 241, 0.5)'}>Terms</a>

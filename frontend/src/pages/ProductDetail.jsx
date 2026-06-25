@@ -70,10 +70,10 @@ const ProductDetail = () => {
   const description = product.description || 'A beautiful piece from our curated collection — designed with care and crafted for everyday elegance.';
 
   return (
-    <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg-cream)', paddingTop: '90px' }}>
+    <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg-cream)' }} className="page-top-spacing">
 
       {/* ── Breadcrumb ── */}
-      <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '2rem 2rem 0' }}>
+      <div className="container" style={{ paddingTop: '2rem', paddingBottom: 0 }}>
         <button
           onClick={() => navigate(-1)}
           style={{
@@ -93,23 +93,11 @@ const ProductDetail = () => {
       </div>
 
       {/* ── Main Product Layout ── */}
-      <section style={{ maxWidth: '1300px', margin: '0 auto', padding: '3rem 2rem 8rem' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '5rem',
-          alignItems: 'start',
-        }}>
+      <section className="container product-detail-section" style={{ paddingTop: '3rem', paddingBottom: '8rem' }}>
+        <div className="product-detail-layout">
 
           {/* LEFT: Image */}
-          <div style={{
-            position: 'sticky',
-            top: '110px',
-            aspectRatio: '3/4',
-            overflow: 'hidden',
-            backgroundColor: '#F7F2ED',
-            border: 'none',
-          }}>
+          <div className="product-detail-image">
             <img
               src={imageUrl}
               alt={name}

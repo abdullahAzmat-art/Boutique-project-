@@ -51,17 +51,13 @@ const Home = () => {
       <Hero />
       
       {/* Categories Section */}
-      <section style={{ padding: '6rem 0' }}>
+      <section className="section-padding">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 className="section-title" style={{ marginBottom: '1rem' }}>Shop by Category</h2>
             <p style={{ color: 'var(--text-muted)' }}>Find your perfect look for any occasion.</p>
           </div>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '2.5rem'
-          }}>
+          <div className="category-grid">
             {[
               { name: '3-Piece Suits', img: cat1Img },
               { name: 'Formal Dress', img: cat2Img },
@@ -74,7 +70,7 @@ const Home = () => {
               }}
               onMouseOver={e => e.currentTarget.querySelector('img').style.transform = 'scale(1.03)'}
               onMouseOut={e => e.currentTarget.querySelector('img').style.transform = 'scale(1)'}>
-                <div style={{ overflow: 'hidden', height: '480px' }}>
+                <div className="category-card-img">
                   <img src={cat.img} alt={cat.name} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s ease' }} />
                 </div>
                 <div style={{ padding: '1.5rem 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(183, 110, 121, 0.2)' }}>
@@ -94,17 +90,13 @@ const Home = () => {
       <FloralDivider />
 
       {/* Featured Products */}
-      <section style={{ padding: '4rem 0 8rem' }}>
+      <section className="section-padding-sm">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 className="section-title" style={{ marginBottom: '1rem' }}>Our Favorites</h2>
             <p style={{ color: 'var(--text-muted)' }}>Handpicked styles we know you'll love.</p>
           </div>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '1.5rem',
-          }}>
+          <div className="products-grid-home">
             {featuredProducts.map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -116,13 +108,10 @@ const Home = () => {
       </section>
 
       {/* About Boutique */}
-      <section style={{ 
-        backgroundColor: 'var(--primary-light)', 
-        padding: '8rem 0',
-      }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '4rem', flexWrap: 'wrap' }}>
-          <div style={{ flex: 1, minWidth: '300px' }} className="fade-in">
-            <h2 className="font-serif" style={{ fontSize: '3rem', marginBottom: '1.5rem', color: 'var(--secondary)' }}>
+      <section className="section-padding" style={{ backgroundColor: 'var(--primary-light)' }}>
+        <div className="container about-section-inner">
+          <div style={{ flex: 1, minWidth: '280px' }} className="fade-in">
+            <h2 className="font-serif" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1.5rem', color: 'var(--secondary)' }}>
               A Story of <br /> Grace & Style
             </h2>
             <p style={{ fontSize: '1.05rem', color: 'var(--text-main)', marginBottom: '2.5rem', lineHeight: '1.9' }}>
@@ -133,22 +122,31 @@ const Home = () => {
               Read Our Story
             </button>
           </div>
-          <div style={{ flex: 1, position: 'relative', height: '450px', minWidth: '300px' }}>
-             <div className="card-modern" style={{
-               width: '100%',
-               height: '100%',
-               background: `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaaJMWvXX-N_vVrYCvZxDIRYOkCOSrCimZ580jLHWjPw&s=10)`,
-               backgroundSize: 'cover',
-               backgroundPosition: 'center',
-             }}>
-              
-             </div>
+        <div className="about-section-image">
+  <div className="card-modern" style={{
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+  }}>
+    <img 
+      src="/src/assets/cat-1.jpg" 
+      alt="About Ayesha Collection"
+      style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        objectPosition: 'center',
+        display: 'block',
+      }} 
+    />
+  </div>
+</div>
           </div>
-        </div>
+        
       </section>
 
       {/* Testimonials */}
-      <section style={{ padding: '8rem 0' }}>
+      <section className="section-padding">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 className="section-title">Loved by You</h2>
@@ -185,16 +183,16 @@ const Home = () => {
       <FloralDivider />
 
       {/* Instagram Gallery */}
-      <section style={{ padding: '0 0 8rem' }}>
-        <div className="container" style={{ padding: '0' }}>
+      <section className="section-padding-sm">
+        <div className="container">
            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Join Us on Instagram</h2>
             <p style={{ color: 'var(--text-muted)', fontFamily: "'Montserrat', sans-serif", letterSpacing: '2px' }}>@ayesha.a collection</p>
           </div>
-          <div style={{ display: 'flex', width: '100%', overflow: 'hidden', gap: '1rem' }}>
-            {[1,2,3,4,5].map((img, idx) => (
-              <div key={idx} style={{ flex: 1, aspectRatio: '1/1', overflow: 'hidden', borderRadius: '0px' }}>
-                 <img src={product1} alt="Instagram" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <div className="instagram-gallery">
+            {["/insta-pic/1.png" , "/insta-pic/2.png" , "/insta-pic/3.png" , "/insta-pic/4.png" , "/insta-pic/5.png" ].map((img, idx) => (
+              <div key={idx} style={{ aspectRatio: '1/1', overflow: 'hidden', borderRadius: '0px' }}>
+                 <img src={img} alt="Instagram" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             ))}
           </div>

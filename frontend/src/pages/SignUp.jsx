@@ -52,21 +52,10 @@ const SignUp = () => {
   };
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-    }}>
+    <div className="auth-layout">
 
       {/* ── LEFT PANEL: Form ── */}
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '5rem',
-        backgroundColor: 'var(--white)',
-      }}>
+      <div className="auth-form-panel">
         <div style={{ width: '100%', maxWidth: '420px' }}>
 
           {/* Brand Text Logo */}
@@ -154,7 +143,7 @@ const SignUp = () => {
             )}
 
             {/* Name Row */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="form-grid-2-sm">
               <div className="form-group">
                 <label className="form-label" htmlFor="firstName">First Name</label>
                 <input
@@ -274,11 +263,7 @@ const SignUp = () => {
       </div>
 
       {/* ── RIGHT PANEL: Image ── */}
-      <div style={{
-        position: 'relative',
-        overflow: 'hidden',
-        backgroundColor: 'var(--bg-cream)',
-      }}>
+      <div className="auth-image-panel">
         <img
           src={heroImg}
           alt="Ayesha Boutique"
